@@ -1,0 +1,7 @@
+node_modules
+*~
+*.swap
+.DS_Store
+.settings
+.classpath
+bin
