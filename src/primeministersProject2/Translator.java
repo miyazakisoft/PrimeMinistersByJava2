@@ -54,7 +54,7 @@ public class Translator extends Object {
 		String[] stringArray = periodString.split("[0-9]+", 0);
 		Set<String> aSet = new HashSet<String>();
 
-		// 空文字を除去しながらダブりも覗く
+		// 空文字を除去しながらダブりも除く
 		for (String aString : stringArray) {
 
 		}
