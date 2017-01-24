@@ -43,7 +43,12 @@ public abstract class Attributes extends java.lang.Object {
 	 * @return 名前（キー）
 	 */
 	protected java.lang.String at(java.lang.Integer index) {
-		return null;
+		java.lang.String aString = names.get(index);
+
+		if (aString.compareTo("") != 0) {
+			return keys.get(index);
+		}
+		return aString;
 	}
 
 	/**
@@ -59,7 +64,7 @@ public abstract class Attributes extends java.lang.Object {
 	 * @return ページのためのディレクトリ
 	 */
 	public java.io.File directoryOfPages() {
-		
+
 		return null;
 	}
 
@@ -110,7 +115,7 @@ public abstract class Attributes extends java.lang.Object {
 	 * @return インデックス
 	 */
 	protected java.lang.Integer indexOf(java.lang.String aString) {
-		return this.indexOf(aString);
+		return this.keys.indexOf(aString);
 	}
 
 	/**
@@ -258,7 +263,15 @@ public abstract class Attributes extends java.lang.Object {
 	 */
 	@Override
 	public java.lang.String toString() {
-		return null;
+		StringBuffer aBuffer = new StringBuffer();
+		Class<? extends Attributes> aClass = this.getClass();
+		aBuffer.append(aClass.getName());
+		aBuffer.append("[keys=");
+		aBuffer.append(keys);
+		aBuffer.append(",names=");
+		aBuffer.append(names);
+		aBuffer.append("]");
+		return aBuffer.toString();
 	}
 
 	/**
