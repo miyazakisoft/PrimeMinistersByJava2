@@ -37,4 +37,40 @@ public class AttributesForPrimeMinisters extends Attributes {
 		}
 
 	}
+
+	@Override
+	String captionString() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	String directoryString() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	String fileStringOfCSV() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	String fileStringOfHTML() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	String titleString() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	String urlString() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
