@@ -56,7 +56,7 @@ public abstract class Attributes extends java.lang.Object {
 	 * 
 	 * @return 標題文字列
 	 */
-	abstract java.lang.String captionString();
+	abstract public java.lang.String captionString();
 
 	/**
 	 * ページのためのディレクトリ（存在しなければ作成して）を応答する。
@@ -64,7 +64,7 @@ public abstract class Attributes extends java.lang.Object {
 	 * @return ページのためのディレクトリ
 	 */
 	public java.io.File directoryOfPages() {
-
+		IO.directoryOfPages();
 		return null;
 	}
 
@@ -73,7 +73,7 @@ public abstract class Attributes extends java.lang.Object {
 	 * 
 	 * @return ページのためのディレクトリ文字列
 	 */
-	abstract java.lang.String directoryString();
+	abstract public java.lang.String directoryString();
 
 	/**
 	 * 情報を記したローカルなCSVファイルを応答する。
@@ -81,6 +81,7 @@ public abstract class Attributes extends java.lang.Object {
 	 * @return 情報を記したローカルなCSVファイル
 	 */
 	public java.io.File fileOfCSV() {
+		
 		return null;
 	}
 
@@ -90,6 +91,7 @@ public abstract class Attributes extends java.lang.Object {
 	 * @return ページのためのローカルなHTMLのインデックスファイル
 	 */
 	public java.io.File fileOfHTML() {
+		
 		return null;
 	}
 
@@ -98,14 +100,14 @@ public abstract class Attributes extends java.lang.Object {
 	 * 
 	 * @return 情報を記したCSVファイル文字列
 	 */
-	abstract java.lang.String fileStringOfCSV();
+	abstract public java.lang.String fileStringOfCSV();
 
 	/**
 	 * ページのためのローカルなHTMLのインデックスファイル(index.html)を文字列で応答する。
 	 * 
 	 * @return ページのためのローカルなHTMLのインデックスファイル文字列
 	 */
-	abstract java.lang.String fileStringOfHTML();
+	abstract public java.lang.String fileStringOfHTML();
 
 	/**
 	 * 指定されたキー文字列のインデックスを応答する。
@@ -246,7 +248,7 @@ public abstract class Attributes extends java.lang.Object {
 	 * @return タイムスタンプ
 	 */
 	public static java.lang.String timestamp() {
-		return timestamp;
+		return Attributes.timestamp;
 	}
 
 	/**
@@ -254,7 +256,7 @@ public abstract class Attributes extends java.lang.Object {
 	 * 
 	 * @return タイトル文字列
 	 */
-	abstract java.lang.String titleString();
+	abstract public java.lang.String titleString();
 
 	/**
 	 * 自分自身を文字列にして、それを応答する。
@@ -279,7 +281,7 @@ public abstract class Attributes extends java.lang.Object {
 	 * 
 	 * @return 情報の在処の文字列
 	 */
-	abstract java.lang.String urlString();
+	abstract public java.lang.String urlString();
 
 	/**
 	 * 情報を記したCSVファイルの在処(URL)を文字列で応答する。

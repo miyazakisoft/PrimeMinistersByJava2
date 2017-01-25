@@ -38,40 +38,63 @@ public class AttributesForTokugawaShogunate extends Attributes {
 
 	}
 
+	/**
+	 * 標題文字列を応答する。
+	 * 
+	 * @return 標題文字列
+	 */
 	@Override
-	String captionString() {
+	public java.lang.String captionString() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
+	/**
+	 * 徳川幕府ページのためのディレクトリを文字列で応答する。
+	 * 
+	 * @return 徳川幕府ページのためのディレクトリ文字列
+	 */
 	@Override
-	String directoryString() {
-		// TODO Auto-generated method stub
+	public java.lang.String directoryString() {
 		return null;
 	}
 
+	/**
+	 * 徳川幕府の情報を記したCSVファイルを文字列で応答する。
+	 * 
+	 * @return 徳川幕府の情報を記したCSVファイル文字列
+	 */
 	@Override
-	String fileStringOfCSV() {
-		// TODO Auto-generated method stub
-		return null;
+	public java.lang.String fileStringOfCSV() {
+		return "TokugawaShogunate.csv";
 	}
 
+	/**
+	 * 徳川幕府ページのためのローカルなHTMLのインデックスファイル(index.html)を文字列で応答する。
+	 * 
+	 * @return 徳川幕府ページのためのローカルなHTMLのインデックスファイル文字列
+	 */
 	@Override
-	String fileStringOfHTML() {
-		// TODO Auto-generated method stub
-		return null;
+	public java.lang.String fileStringOfHTML() {
+		return "TokugawaShogunate.html";
 	}
 
+	/**
+	 * タイトル文字列を応答する。
+	 * @return タイトル文字列
+	 */
 	@Override
-	String titleString() {
-		// TODO Auto-generated method stub
-		return null;
+	public java.lang.String titleString() {
+		return "Prime Ministers";
 	}
 
+	/**
+	 * 徳川幕府の情報の在処(URL)を文字列で応答する。
+	 * @return 徳川幕府の情報の在処の文字列
+	 */
 	@Override
-	String urlString() {
-		// TODO Auto-generated method stub
-		return null;
+	public java.lang.String urlString() {
+		return "http://www.cc.kyoto-su.ac.jp/~atsushi/Programs/VisualWorks/CSV2HTML/TokugawaShogunate/";
 	}
 
 }

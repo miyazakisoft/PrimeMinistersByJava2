@@ -39,37 +39,36 @@ public class AttributesForPrimeMinisters extends Attributes {
 	}
 
 	@Override
-	String captionString() {
+	public java.lang.String captionString() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	String directoryString() {
+	public java.lang.String directoryString() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	String fileStringOfCSV() {
+	public java.lang.String fileStringOfCSV() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	String fileStringOfHTML() {
+	public java.lang.String fileStringOfHTML() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	String titleString() {
-		// TODO Auto-generated method stub
-		return null;
+	public java.lang.String titleString() {
+		return "Prime Ministers";
 	}
 
 	@Override
-	String urlString() {
+	public java.lang.String urlString() {
 		// TODO Auto-generated method stub
 		return null;
 	}
