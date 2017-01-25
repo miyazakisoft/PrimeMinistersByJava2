@@ -16,6 +16,7 @@ public class AttributesForPrimeMinisters extends Attributes {
 	 */
 	public AttributesForPrimeMinisters(String aString) {
 		super();
+		
 		if (aString.compareTo("input") == 0) {
 			String[] aCollection = new String[] { "no", "order", "name", "kana", "period", "school", "party", "place",
 					"image", "thumbnail" };

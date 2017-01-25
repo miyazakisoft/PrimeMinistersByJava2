@@ -39,19 +39,16 @@ public abstract class IO extends Object {
 		return;
 	}
 
-	
 	/**
 	 * 属性リストを応答する。
+	 * 
 	 * @return 属性リスト
 	 */
-	public Attributes attributes(){
-		
+	public Attributes attributes() {
+
 		return null;
 	}
-	
-	
-	
-	
+
 	/**
 	 * ファイルやディレクトリを削除するクラスメソッド。 良好（2017年1月10日）
 	 * 
@@ -72,7 +69,8 @@ public abstract class IO extends Object {
 	 * @return aFile ファイル
 	 */
 	public static File directoryOfPages() {
-		File aFile = new File(System.getProperty("user.home") + "/Desktop");
+		File aFile = new File(
+				new StringBuilder().append(System.getProperty("user.home")).append("/Desktop").toString());
 		if (!aFile.exists()) {
 			aFile.mkdir();
 		}

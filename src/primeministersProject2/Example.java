@@ -10,10 +10,10 @@ public class Example extends Object {
 
 		List<Class<? extends Attributes>> classes = new ArrayList<Class<? extends Attributes>>();
 		classes.add(AttributesForPrimeMinisters.class);
-		classes.add(AttributesForTokugawaShogunate.class);
+		//classes.add(AttributesForTokugawaShogunate.class);
 
 		for (Class<? extends Attributes> classOfAttributes : classes) {
-			//Translator.perform(classOfAttributes);
+			Translator.perform(classOfAttributes);
 		}
 
 		return;

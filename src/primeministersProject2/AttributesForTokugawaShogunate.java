@@ -45,7 +45,7 @@ public class AttributesForTokugawaShogunate extends Attributes {
 	 */
 	@Override
 	public java.lang.String captionString() {
-		// TODO Auto-generated method stub
+		
 		return null;
 	}
 
