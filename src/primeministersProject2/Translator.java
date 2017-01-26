@@ -2,6 +2,9 @@ package primeministersProject2;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
+import java.util.Calendar;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -48,6 +51,11 @@ public class Translator extends java.lang.Object {
 
 	}
 
+	/**
+	 * 在位日数を計算して、それを文字列にして応答する。
+	 * @param periodString 在位期間の文字列
+	 * @return 在位日数の文字列
+	 */
 	public String computeNumberOfDays(String periodString) {
 
 		// 数字以外の文字列を得る（空文字列を含む）
@@ -56,10 +64,52 @@ public class Translator extends java.lang.Object {
 
 		// 空文字を除去しながらダブりも除く
 		for (String aString : stringArray) {
+			if (aString.compareTo("") != 0) {
+				aSet.add(aString);
+			}
+		}
+
+		StringBuilder regexBuilder = new StringBuilder();
+
+		// 「年,月,日,日〜」を除くような正規表現を作成
+		regexBuilder.append("[");
+		for (String aString : aSet) {
+			regexBuilder.append(aString);
+		}
+		regexBuilder.append("]+");
+
+		// 「年,月,日,日〜」以外の文字列を得る
+		String[] stringArray2 = periodString.split(regexBuilder.toString(), 0);
+
+		for (String aString : stringArray2) {
 			System.out.println(aString);
 		}
 
-		return null;
+		Integer yearFrom, monthFrom, dayFrom;
+		Integer yearTo, monthTo, dayTo;
+
+		yearFrom = Integer.parseInt(stringArray2[0]);
+		monthFrom = Integer.parseInt(stringArray2[1]);
+		dayFrom = Integer.parseInt(stringArray2[2]);
+
+		if (stringArray2.length < 4) {
+			Calendar aCalendar = Calendar.getInstance();
+			yearTo = aCalendar.get(Calendar.YEAR); // 現在の年を取得
+			monthTo = aCalendar.get(Calendar.MONTH) + 1; // 現在の月を取得
+			dayTo = aCalendar.get(Calendar.DATE) + 1; // 現在の日を取得
+		} else {
+			yearTo = Integer.parseInt(stringArray2[3]);
+			monthTo = Integer.parseInt(stringArray2[4]);
+			dayTo = Integer.parseInt(stringArray2[5]);
+		}
+
+		LocalDate from = LocalDate.of(yearFrom, monthFrom, dayFrom);
+		LocalDate to = LocalDate.of(yearTo, monthTo, dayTo);
+		Long diffDays = ChronoUnit.DAYS.between(from, to) + 1;
+
+		String days = String.format("%,d", diffDays);
+
+		return days;
 	}
 
 	/**
@@ -149,9 +199,6 @@ public class Translator extends java.lang.Object {
 
 			// CSVファイルを基にしたテーブルから、HTMLページを基にするテーブルに変換
 			aTranslator.translate();
-
-			// 日付のテスト
-			aTranslator.computeNumberOfDays("1745年11月2日〜1760年5月13日");
 
 		} catch (InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException
 				| NoSuchMethodException | SecurityException anException) {
