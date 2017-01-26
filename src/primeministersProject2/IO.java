@@ -24,7 +24,7 @@ import java.util.List;
  * @version 1.0
  * @author 宮崎光
  */
-public abstract class IO extends Object {
+public abstract class IO extends java.lang.Object {
 
 	/**
 	 * テーブル（表：スプレッドシート）を記憶するフィールド。
@@ -34,8 +34,9 @@ public abstract class IO extends Object {
 	/**
 	 * 入出力のコンストラクタ 良好（2017年1月10日）
 	 */
-	public IO() {
+	public IO(Table aTable) {
 		super();
+		this.table = aTable;
 		return;
 	}
 

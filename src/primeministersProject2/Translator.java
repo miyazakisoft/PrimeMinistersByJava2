@@ -53,7 +53,9 @@ public class Translator extends java.lang.Object {
 
 	/**
 	 * 在位日数を計算して、それを文字列にして応答する。
-	 * @param periodString 在位期間の文字列
+	 * 
+	 * @param periodString
+	 *            在位期間の文字列
 	 * @return 在位日数の文字列
 	 */
 	public String computeNumberOfDays(String periodString) {
@@ -176,6 +178,21 @@ public class Translator extends java.lang.Object {
 	 * CSVファイルをHTMLページへ変換する。
 	 */
 	public void perform() {
+		Downloader aDownload = new Downloader(inputTable);
+		
+		aDownload.perform();
+		
+		this.inputTable = aDownload.table();
+
+
+		// CSVファイルを基にしたテーブルから、HTMLページを基にするテーブルに変換
+		this.translate();
+
+		// Table aTable = this.table(this.inputTable);
+
+		// Writer aWriter = new Writer();
+		// aWriter.table(aTable);
+		String aString = "総理大臣のCSVファイルからHTMLページへの変換を無事に完了しました。\n";
 	}
 
 	/**
@@ -197,8 +214,7 @@ public class Translator extends java.lang.Object {
 			// IllegalArgumentException、InvocationTargetExceptionが出るかもしれない
 			Translator aTranslator = aConstructor.newInstance(classOfAttributes);
 
-			// CSVファイルを基にしたテーブルから、HTMLページを基にするテーブルに変換
-			aTranslator.translate();
+			aTranslator.perform();
 
 		} catch (InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException
 				| NoSuchMethodException | SecurityException anException) {
