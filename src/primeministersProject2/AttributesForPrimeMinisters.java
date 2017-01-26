@@ -45,23 +45,7 @@ public class AttributesForPrimeMinisters extends Attributes {
 		return null;
 	}
 
-	@Override
-	public java.lang.String directoryString() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
-	@Override
-	public java.lang.String fileStringOfCSV() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public java.lang.String fileStringOfHTML() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	@Override
 	public java.lang.String titleString() {
@@ -69,8 +53,15 @@ public class AttributesForPrimeMinisters extends Attributes {
 	}
 
 	@Override
-	public java.lang.String urlString() {
+	String baseUrl() {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	String csvUrl() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

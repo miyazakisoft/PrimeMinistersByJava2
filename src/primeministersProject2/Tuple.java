@@ -3,7 +3,8 @@ package primeministersProject2;
 /**
  * タプル：情報テーブルの中の各々のレコード。
  * 
- * @author kou
+ * @version 1.0
+ * @author 宮崎光
  *
  */
 public class Tuple extends java.lang.Object {

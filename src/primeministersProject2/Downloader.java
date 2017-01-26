@@ -12,7 +12,8 @@ import javax.imageio.ImageIO;
 /**
  * ダウンローダ：CSVファイル・画像ファイル・サムネイル画像ファイルをダウンロードする。
  * 
- * @author kou
+ * @version 1.0
+ * @author 宮崎光
  *
  */
 public class Downloader extends IO {
@@ -44,6 +45,21 @@ public class Downloader extends IO {
 	 */
 	public void downloadImages() {
 
+		attributes().baseDirectory("images");
+
+		Integer index = this.attributes().indexOfImage();
+		this.downloadPictures(index);
+	}
+
+	/**
+	 * 総理大臣のサムネイル画像群をダウンロードする。
+	 */
+	public void downloadThumbnails() {
+
+		attributes().baseDirectory("thumbnails");
+
+		Integer index = this.attributes().indexOfThumbnail();
+		this.downloadPictures(index);
 	}
 
 	/**
@@ -59,14 +75,15 @@ public class Downloader extends IO {
 				String aString = aTuple.values().get(indexOfPicture);
 
 				// MalformedURLExceptionが出るかもしれない
-				aURL = new URL(this.attributes().urlStringOfCSV());
-				System.out.println(this.attributes().urlStringOfCSV());
+				aURL = new URL(this.attributes().baseDirectory());
+				System.out.println(this.attributes().baseDirectory());
 
 				// IOExceptionが出るかもしれない
 				anImage = ImageIO.read(aURL);
 
 				// IOExceptionが出るかもしれない
-				//ImageIO.write(anImage, "jpeg", new File(IO.directoryOfPages(this.getTittleName()), aString));
+				// ImageIO.write(anImage, "jpeg", new
+				// File(IO.directoryOfPages(this.getTittleName()), aString));
 
 				if (indexOfPicture == aTuple.attributes().indexOfThumbnail()) {
 					this.table.thumbnails().add(anImage);
@@ -83,19 +100,12 @@ public class Downloader extends IO {
 	}
 
 	/**
-	 * 総理大臣のサムネイル画像群をダウンロードする。
-	 */
-	public void downloadThumbnails() {
-
-	}
-
-	/**
 	 * 総理大臣の情報を記したCSVファイルをダウンロードして、画像群やサムネイル画像群もダウンロードする。
 	 */
 	public void perform() {
 		this.downloadCSV();
-		//this.downloadImages();
-		//this.downloadThumbnails();
+		// this.downloadImages();
+		// this.downloadThumbnails();
 	}
 
 }

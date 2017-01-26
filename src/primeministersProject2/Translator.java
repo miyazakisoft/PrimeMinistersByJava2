@@ -11,6 +11,9 @@ import java.util.Set;
 
 /**
  * トランスレータ：CSVファイルをHTMLページへと変換するプログラム。
+ * 
+ * @version 1.0
+ * @author 宮崎光
  */
 public class Translator extends java.lang.Object {
 
@@ -179,11 +182,10 @@ public class Translator extends java.lang.Object {
 	 */
 	public void perform() {
 		Downloader aDownload = new Downloader(inputTable);
-		
-		aDownload.perform();
-		
-		this.inputTable = aDownload.table();
 
+		aDownload.perform();
+
+		this.inputTable = aDownload.table();
 
 		// CSVファイルを基にしたテーブルから、HTMLページを基にするテーブルに変換
 		this.translate();

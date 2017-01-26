@@ -3,7 +3,8 @@ package primeministersProject2;
 /**
  * 属性リスト：徳川幕府の情報テーブルを入出力する際の属性情報を記憶。
  * 
- * @author kou
+ * @version 1.0
+ * @author 宮崎光
  *
  */
 public class AttributesForTokugawaShogunate extends Attributes {
@@ -45,8 +46,8 @@ public class AttributesForTokugawaShogunate extends Attributes {
 	 */
 	@Override
 	public java.lang.String baseDirectory() {
-		return new StringBuilder().append(System.getProperty("user.home")).append("/Desktop/TokugawaShogunate")
-				.toString();
+		super.baseDirectory();
+		return null;
 	}
 
 	/**

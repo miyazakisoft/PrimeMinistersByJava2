@@ -1,12 +1,14 @@
 package primeministersProject2;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * 属性リスト：情報テーブルを入出力する際の属性情報を記憶。
  * 
- * @author kou
+ * @version 1.0
+ * @author 宮崎光
  *
  */
 public abstract class Attributes extends java.lang.Object {
@@ -33,6 +35,7 @@ public abstract class Attributes extends java.lang.Object {
 		super();
 		keys = new ArrayList<String>();
 		names = new ArrayList<String>();
+		baseDirectory = new StringBuilder().append(System.getProperty("user.home")).append("/Desktop/").toString();
 	}
 
 	/**
@@ -51,8 +54,6 @@ public abstract class Attributes extends java.lang.Object {
 		return aString;
 	}
 
-
-
 	/**
 	 * ページのためのディレクトリを応答する。
 	 * 
@@ -70,10 +71,13 @@ public abstract class Attributes extends java.lang.Object {
 	 * @return ページのためのディレクトリ
 	 */
 	public java.lang.String baseDirectory(java.lang.String kindString) {
-		return null;
+		File aFile = new File(baseDirectory(), kindString);
+		if (aFile.exists() == false) {
+			aFile.mkdir();
+		}
+
+		return baseDirectory();
 	}
-	
-	
 
 	/**
 	 * 情報の在処(URL)を文字列で応答する。
@@ -82,14 +86,13 @@ public abstract class Attributes extends java.lang.Object {
 	 */
 	abstract java.lang.String baseUrl();
 
-	
 	/**
 	 * 標題文字列を応答する。
 	 * 
 	 * @return 標題文字列
 	 */
 	abstract public java.lang.String captionString();
-	
+
 	/**
 	 * 情報を記したCSVファイルの在処(URL)を文字列で応答する。
 	 * 
@@ -97,13 +100,11 @@ public abstract class Attributes extends java.lang.Object {
 	 */
 	abstract java.lang.String csvUrl();
 
-
-
 	/**
 	 * ベースとなるディレクトリの記憶を水に流す。
 	 */
 	public static void flushBaseDirectory() {
-
+		baseDirectory = "";
 	}
 
 	/**
@@ -112,7 +113,7 @@ public abstract class Attributes extends java.lang.Object {
 	 * @return ページのためのローカルなHTMLのインデックスファイル文字列
 	 */
 	public java.lang.String indexHTML() {
-		return null;
+		return new StringBuilder().append(baseDirectory()).append("index.html").toString();
 	}
 
 	/**
