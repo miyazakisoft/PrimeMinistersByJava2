@@ -9,8 +9,8 @@ public class Example extends Object {
 		// 総理大臣と徳川幕府の属性リストのクラス群を作る。
 
 		List<Class<? extends Attributes>> classes = new ArrayList<Class<? extends Attributes>>();
-		classes.add(AttributesForPrimeMinisters.class);
-		//classes.add(AttributesForTokugawaShogunate.class);
+		//classes.add(AttributesForPrimeMinisters.class);
+		classes.add(AttributesForTokugawaShogunate.class);
 
 		for (Class<? extends Attributes> classOfAttributes : classes) {
 			Translator.perform(classOfAttributes);

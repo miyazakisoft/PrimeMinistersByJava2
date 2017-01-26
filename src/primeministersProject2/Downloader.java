@@ -5,11 +5,9 @@ import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.List;
 
 import javax.imageio.ImageIO;
-
-import primeministers.IO;
-import primeministers.Tuple;
 
 /**
  * ダウンローダ：CSVファイル・画像ファイル・サムネイル画像ファイルをダウンロードする。
@@ -34,7 +32,11 @@ public class Downloader extends IO {
 	 * 総理大臣の情報を記したCSVファイルをダウンロードする。
 	 */
 	public void downloadCSV() {
+		Attributes anAttributes = this.attributes();
 
+		List<String> aCollection = IO.readTextFromURL(anAttributes.csvUrl());
+		File aFile = new File(anAttributes.baseDirectory(), "TokugawaShogunate.csv");
+		IO.writeText(aCollection, aFile);
 	}
 
 	/**
@@ -51,25 +53,20 @@ public class Downloader extends IO {
 	 */
 	private void downloadPictures(Integer indexOfPicture) {
 		try {
-			for (Tuple aTuple : this.table().tuples()) {
+			for (Tuple aTuple : this.tuples()) {
 				URL aURL = null;
 				BufferedImage anImage = null;
 				String aString = aTuple.values().get(indexOfPicture);
 
-				StringBuffer aBuffer = new StringBuffer();
-				aBuffer.append(this.getUrlString());
-				aBuffer.append("/");
-				aBuffer.append(aString);
-
 				// MalformedURLExceptionが出るかもしれない
-				aURL = new URL(aBuffer.toString());
+				aURL = new URL(this.attributes().urlStringOfCSV());
+				System.out.println(this.attributes().urlStringOfCSV());
 
 				// IOExceptionが出るかもしれない
 				anImage = ImageIO.read(aURL);
-				System.out.println(aBuffer.toString());
 
 				// IOExceptionが出るかもしれない
-				ImageIO.write(anImage, "jpeg", new File(IO.directoryOfPages(this.getTittleName()), aString));
+				//ImageIO.write(anImage, "jpeg", new File(IO.directoryOfPages(this.getTittleName()), aString));
 
 				if (indexOfPicture == aTuple.attributes().indexOfThumbnail()) {
 					this.table.thumbnails().add(anImage);
@@ -97,8 +94,8 @@ public class Downloader extends IO {
 	 */
 	public void perform() {
 		this.downloadCSV();
-		this.downloadImages();
-		this.downloadThumbnails();
+		//this.downloadImages();
+		//this.downloadThumbnails();
 	}
 
 }

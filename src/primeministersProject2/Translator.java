@@ -192,7 +192,7 @@ public class Translator extends java.lang.Object {
 
 		// Writer aWriter = new Writer();
 		// aWriter.table(aTable);
-		String aString = "総理大臣のCSVファイルからHTMLページへの変換を無事に完了しました。\n";
+		String aString = "人物のCSVファイルからHTMLページへの変換を無事に完了しました。\n";
 	}
 
 	/**

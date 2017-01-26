@@ -12,6 +12,11 @@ import java.util.List;
 public abstract class Attributes extends java.lang.Object {
 
 	/**
+	 * ベースとなるディレクトリを記憶する（クラス変数）フィールド。
+	 */
+	private static java.lang.String baseDirectory;
+
+	/**
 	 * 属性リストのキー群を記憶する（インスタンス変数）フィールド。
 	 */
 	private List<java.lang.String> keys;
@@ -20,11 +25,6 @@ public abstract class Attributes extends java.lang.Object {
 	 * 属性リストの名前群を記憶する（インスタンス変数）フィールド。
 	 */
 	private List<java.lang.String> names;
-
-	/**
-	 * タイムスタンプを記憶する（クラス変数）フィールド。
-	 */
-	private static java.lang.String timestamp;
 
 	/**
 	 * 属性リストを作成するコンストラクタ。
@@ -51,63 +51,69 @@ public abstract class Attributes extends java.lang.Object {
 		return aString;
 	}
 
+
+
+	/**
+	 * ページのためのディレクトリを応答する。
+	 * 
+	 * @return ページのためのディレクトリ
+	 */
+	public java.lang.String baseDirectory() {
+		return baseDirectory;
+	}
+
+	/**
+	 * ページのためのディレクトリ（存在しなければ作成して）を応答する。
+	 * 
+	 * @param kindString
+	 *            種別を表す文字列
+	 * @return ページのためのディレクトリ
+	 */
+	public java.lang.String baseDirectory(java.lang.String kindString) {
+		return null;
+	}
+	
+	
+
+	/**
+	 * 情報の在処(URL)を文字列で応答する。
+	 * 
+	 * @return 情報の在処の文字列
+	 */
+	abstract java.lang.String baseUrl();
+
+	
 	/**
 	 * 標題文字列を応答する。
 	 * 
 	 * @return 標題文字列
 	 */
 	abstract public java.lang.String captionString();
-
+	
 	/**
-	 * ページのためのディレクトリ（存在しなければ作成して）を応答する。
-	 * 
-	 * @return ページのためのディレクトリ
-	 */
-	public java.io.File directoryOfPages() {
-		IO.directoryOfPages();
-		return null;
-	}
-
-	/**
-	 * ページのためのディレクトリを文字列で応答する。
-	 * 
-	 * @return ページのためのディレクトリ文字列
-	 */
-	abstract public java.lang.String directoryString();
-
-	/**
-	 * 情報を記したローカルなCSVファイルを応答する。
-	 * 
-	 * @return 情報を記したローカルなCSVファイル
-	 */
-	public java.io.File fileOfCSV() {
-		
-		return null;
-	}
-
-	/**
-	 * ページのためのローカルなHTMLのインデックスファイル(index.html)を応答する。
-	 * 
-	 * @return ページのためのローカルなHTMLのインデックスファイル
-	 */
-	public java.io.File fileOfHTML() {
-		
-		return null;
-	}
-
-	/**
-	 * 情報を記したCSVファイルを文字列で応答する。
+	 * 情報を記したCSVファイルの在処(URL)を文字列で応答する。
 	 * 
 	 * @return 情報を記したCSVファイル文字列
 	 */
-	abstract public java.lang.String fileStringOfCSV();
+	abstract java.lang.String csvUrl();
+
+
+
+	/**
+	 * ベースとなるディレクトリの記憶を水に流す。
+	 */
+	public static void flushBaseDirectory() {
+
+	}
 
 	/**
 	 * ページのためのローカルなHTMLのインデックスファイル(index.html)を文字列で応答する。
 	 * 
 	 * @return ページのためのローカルなHTMLのインデックスファイル文字列
 	 */
-	abstract public java.lang.String fileStringOfHTML();
+	public java.lang.String indexHTML() {
+		return null;
+	}
 
 	/**
 	 * 指定されたキー文字列のインデックスを応答する。
@@ -243,15 +249,6 @@ public abstract class Attributes extends java.lang.Object {
 	}
 
 	/**
-	 * タイムスタンプを応答する。
-	 * 
-	 * @return タイムスタンプ
-	 */
-	public static java.lang.String timestamp() {
-		return Attributes.timestamp;
-	}
-
-	/**
 	 * タイトル文字列を応答する。
 	 * 
 	 * @return タイトル文字列
@@ -274,22 +271,6 @@ public abstract class Attributes extends java.lang.Object {
 		aBuffer.append(names);
 		aBuffer.append("]");
 		return aBuffer.toString();
-	}
-
-	/**
-	 * 情報の在処(URL)を文字列で応答する。
-	 * 
-	 * @return 情報の在処の文字列
-	 */
-	abstract public java.lang.String urlString();
-
-	/**
-	 * 情報を記したCSVファイルの在処(URL)を文字列で応答する。
-	 * 
-	 * @return 情報を記したCSVファイル文字列
-	 */
-	public java.lang.String urlStringOfCSV() {
-		return new StringBuilder().append(this.urlString()).append(this.fileStringOfCSV()).toString();
 	}
 
 }

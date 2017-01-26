@@ -46,8 +46,7 @@ public abstract class IO extends java.lang.Object {
 	 * @return 属性リスト
 	 */
 	public Attributes attributes() {
-
-		return null;
+		return table.attributes();
 	}
 
 	/**
@@ -63,28 +62,13 @@ public abstract class IO extends java.lang.Object {
 	}
 
 	/**
-	 * 人物ページのためのディレクトリ（存在しなければ作成して）を応答するメソッド。 良好（2017年1月10日）
+	 * 指定された文字列をHTML内に記述できる正式な文字列に変換して応答する。
 	 * 
-	 * @param TittleName
-	 *            タイトル名
-	 * @return aFile ファイル
+	 * @param aString
+	 * @return
 	 */
-	public static File directoryOfPages() {
-		File aFile = new File(
-				new StringBuilder().append(System.getProperty("user.home")).append("/Desktop").toString());
-		if (!aFile.exists()) {
-			aFile.mkdir();
-		}
-		return aFile;
-	}
-
-	/**
-	 * 入出力する際の文字コードを応答するクラスメソッド。 良好（2017年1月10日）
-	 * 
-	 * @return 文字コード
-	 */
-	public static String encodingSymbol() {
-		return "UTF-8";
+	public static java.lang.String htmlCanonicalString(java.lang.String aString) {
+		return null;
 	}
 
 	/**
@@ -94,7 +78,7 @@ public abstract class IO extends java.lang.Object {
 	 *            ファイル
 	 * @return aCollection リスト
 	 */
-	public static List<String> readTextFromFile(File aFile) {
+	public static List<java.lang.String> readTextFromFile(File aFile) {
 		Reader inputStreamReader = null;
 
 		try {
@@ -121,7 +105,7 @@ public abstract class IO extends java.lang.Object {
 	 *            ファイル文字列
 	 * @return aCollection リスト
 	 */
-	public static List<String> readTextFromFile(String aFileString) {
+	public static List<java.lang.String> readTextFromFile(String aFileString) {
 		File aFile = new File(aFileString);
 		List<String> aCollection = IO.readTextFromFile(aFile);
 		return aCollection;
@@ -134,7 +118,7 @@ public abstract class IO extends java.lang.Object {
 	 *            URL文字列
 	 * @return aCollection リスト
 	 */
-	public static List<String> readTextFromURL(String urlString) {
+	public static List<java.lang.String> readTextFromURL(String urlString) {
 		URL aURL = null;
 		try {
 			// MalformedURLException anExceptionがでるかもしれない
@@ -174,29 +158,24 @@ public abstract class IO extends java.lang.Object {
 
 	/**
 	 * 文字列をセパレータで分割したトークン列を応答するクラスメソッド。
-	 * 連続フラグをtrueにすると、separatorsで指定した文字列(aString)が連続していた場合、 空白を追加するようになる。
-	 * 良好（2017年1月10日）
 	 * 
-	 * @param aString
+	 * @param string
 	 *            文字列
 	 * @param separators
-	 *            セパレータ
-	 * @param ConsecutiveFlag
-	 *            連続フラグ
-	 * @return result 文字列をセパレータで分割したトークン列
+	 *            セパレータ文字列
+	 * @return トークン列
 	 */
-	public static ArrayList<String> splitString(String aString, String separators, Boolean ConsecutiveFlag) {
+	public static ArrayList<String> splitString(String string, String separators) {
 		ArrayList<Integer> indexes;
-		Integer stop;
-		Integer index;
+		int stop;
+		int index;
 		ArrayList<String> result;
 
 		indexes = new ArrayList<Integer>();
 		indexes.add(-1);
-
-		stop = aString.length();
+		stop = string.length();
 		for (index = 0; index < stop; index++) {
-			if ((separators.indexOf(aString.charAt(index))) >= 0) {
+			if ((separators.indexOf(string.charAt(index))) >= 0) {
 				indexes.add(index);
 			}
 		}
@@ -210,14 +189,9 @@ public abstract class IO extends java.lang.Object {
 			start = indexes.get(index) + 1;
 			end = indexes.get(index + 1) - 1;
 			if (end >= start) {
-				result.add(aString.substring(start, end + 1));
-			} else {
-				if (ConsecutiveFlag) {
-					result.add("");
-				}
+				result.add(string.substring(start, end + 1));
 			}
 		}
-
 		return result;
 	}
 
@@ -228,6 +202,15 @@ public abstract class IO extends java.lang.Object {
 	 */
 	public Table table() {
 		return this.table;
+	}
+
+	/**
+	 * タプル群を応答する。
+	 * 
+	 * @return タプル群
+	 */
+	public List<Tuple> tuples() {
+		return this.table().tuples();
 	}
 
 	/**
@@ -298,6 +281,15 @@ public abstract class IO extends java.lang.Object {
 			e.printStackTrace();
 		}
 		return aCollection;
+	}
+
+	/**
+	 * 入出力する際の文字コードを応答するクラスメソッド。
+	 * 
+	 * @return 文字コード
+	 */
+	public static java.lang.String encodingSymbol() {
+		return "UTF-8";
 	}
 
 }
